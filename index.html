@@ -201,9 +201,34 @@
             transform: rotateX(-90deg) translateZ(200px);
             /*先沿z轴移动，再旋转*/
         }
+
+        #snow-animation-container {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 10000;
+            background-image: url(image/snow1.png), url(image/snow2.png);
+            -webkit-animation: snow 30s linear infinite;
+            -moz-animation: snow 30s linear infinite;
+            -ms-animation: snow 30s linear infinite;
+            animation: snow 30s linear infinite;
+            pointer-events: none;
+        }
+        @keyframes snow {
+            0% {
+                background-position: 0px 0px, 0px 0px, 0px 0px;
+            }
+            100% {
+                background-position: 500px 1000px, 400px 400px, 300px 300px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div id="snow-animation-container"></div>
+
 <div class="wrap">
     <!-- 我们有两个立方体，内部哪个立方体6个面的图片始终不变。而外部的立方体，当鼠标移上时，替换6个面的图片 -->
     <div class="cube">
@@ -221,5 +246,6 @@
         <i class="itop"></i>
         <i class="ibottom"></i>
     </div>
+
 </body>
 </html>
