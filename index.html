@@ -49,7 +49,7 @@
       <li><a href="#case3">案例3</a></li>
       <li><a href="#case4">案例4</a></li>
     </ul>
-    <div id="box"></div>
+    <iframe id="box"></iframe>
   </div>
   <script>
     let routes = {
@@ -59,33 +59,8 @@
       "#case4": "./case4.html",
     }
     var box = document.getElementById("box");
-
     window.addEventListener("hashchange", function () {
-
-      console.log(location.hash);
-      console.log(routes[location.hash]);
-      //方法一：用jq方法请求数据实现
-      // $("#box").load(routes[location.hash]);
-
-      //方法二：用ajax请求数据实现
-      function loadXMLDoc() {
-        var xmlhttp;
-        if (window.XMLHttpRequest) {
-          xmlhttp = new XMLHttpRequest();
-        } else {
-          xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-        }
-        xmlhttp.onreadystatechange = function () {
-          if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
-            document.getElementById("box").innerHTML = xmlhttp.responseText;
-          }
-        }
-        xmlhttp.open("GET", routes[location.hash], true);
-        xmlhttp.send();
-      }
-      loadXMLDoc()
-
-
+      document.getElementById("box").src = routes[location.hash];
     })       
   </script>
 </body>
